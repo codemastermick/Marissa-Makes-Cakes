@@ -28,7 +28,7 @@ after_success:
   - npm run coverage # upload coverage results to Codacy
   - codecov # upload coverage results to Codecov
   - rm -rf coverage # remove coverage directory before deploying
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT # upload coverage results to Code Climate
+  - ./cc-test-reporter -t lcov after-build --exit-code $TRAVIS_TEST_RESULT # upload coverage results to Code Climate
 before_deploy:
   - semantic-release # release a new version semantically
 deploy: # on success, deploy to Firebase hosting
