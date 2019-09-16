@@ -16,6 +16,9 @@ install:
 before_script:
   - .travis/skip_on_readme.sh || travis_terminate 1 # bail out if the only files changes were .md* files
   - npm run lintonly || travis_terminate 1 # ensure files pass linting
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter # get the latest CC reporter
+  - chmod +x ./cc-test-reporter # make CC reporter executable
+  - ./cc-test-reporter before-build # inform Code Climate of incoming test results
 script:
   - npm run build:prod || travis_terminate 1 # build the app
   - npm run test:ci || travis_terminate 1 # run all tests
@@ -25,6 +28,7 @@ after_success:
   - npm run coverage # upload coverage results to Codacy
   - codecov # upload coverage results to Codecov
   - rm -rf coverage # remove coverage directory before deploying
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT # upload coverage results to Code Climate
 before_deploy:
   - semantic-release # release a new version semantically
 deploy: # on success, deploy to Firebase hosting
