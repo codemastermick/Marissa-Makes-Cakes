@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CakeDisplayComponent } from './cake-display.component';
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 
 describe('CakeDisplayComponent', () => {
   let component: CakeDisplayComponent;
@@ -8,6 +9,7 @@ describe('CakeDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[Angular2ImageGalleryModule],
       declarations: [ CakeDisplayComponent ]
     })
     .compileComponents();
