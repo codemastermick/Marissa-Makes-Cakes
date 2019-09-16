@@ -9,10 +9,10 @@ describe('CakeDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[Angular2ImageGalleryModule],
-      declarations: [ CakeDisplayComponent ]
+      imports: [Angular2ImageGalleryModule],
+      declarations: [CakeDisplayComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
